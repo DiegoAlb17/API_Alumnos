@@ -12,5 +12,13 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return "API de Diego Alberca hecha con Lumen";
+});
+
+$router->group(['prefix' => 'api/'], function () use ($router){
+	$router->get('alumno','AlumnoController@index');
+	$router->get('alumno/{id}','AlumnoController@getAlumno');
+	$router->put('alumno/{id}','AlumnoController@updateAlumno');
+	$router->post('alumno','AlumnoController@createAlumno');
+	$router->delete('alumno{id}','AlumnoController@deleteAlumno');
 });
