@@ -21,4 +21,10 @@ $router->group(['prefix' => 'api/'], function () use ($router){
 	$router->put('alumno/{id}','AlumnoController@updateAlumno');
 	$router->post('alumno','AlumnoController@createAlumno');
 	$router->delete('alumno/{id}','AlumnoController@deleteAlumno');
+
+	$router->get('profe','ProfeController@index');
+	$router->get('profe/{id}','ProfeController@getProfe');
+	$router->put('profe/{id}','ProfeController@updateProfe');
+	$router->post('profe','ProfeController@createProfe');
+	$router->delete('profe/{id}','ProfeController@deleteProfe');
 });
