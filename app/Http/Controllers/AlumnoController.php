@@ -11,7 +11,11 @@ class AlumnoController extends Controller{
 	public function index(){
 		$Alumnos  = Alumno::all();
 		return response()->json($Alumnos);
-  
+    }
+
+    public function showAlumnos(){
+        $Alumnos  = Alumno::all();
+        return view('index')->with('alumnos', $Alumnos);
     }
   
     public function getAlumno($id){

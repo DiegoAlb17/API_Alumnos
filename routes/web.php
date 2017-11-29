@@ -28,3 +28,7 @@ $router->group(['prefix' => 'api/'], function () use ($router){
 	$router->post('profe','ProfeController@createProfe');
 	$router->delete('profe/{id}','ProfeController@deleteProfe');
 });
+
+$router->group(['prefix' => 'app/'], function () use ($router){
+	$router->get('alumno','AlumnoController@showAlumnos');
+});
