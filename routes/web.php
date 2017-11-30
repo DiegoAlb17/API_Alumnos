@@ -31,4 +31,5 @@ $router->group(['prefix' => 'api/'], function () use ($router){
 
 $router->group(['prefix' => 'app/'], function () use ($router){
 	$router->get('alumno','AlumnoController@showAlumnos');
+	$router->get('alumno/{id}','AlumnoController@editAlumno');
 });

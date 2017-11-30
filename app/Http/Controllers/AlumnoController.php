@@ -17,6 +17,11 @@ class AlumnoController extends Controller{
         $Alumnos  = Alumno::all();
         return view('index')->with('alumnos', $Alumnos);
     }
+
+    public function editAlumno($id){
+        $Alumno  = Alumno::find($id);
+        return view('editAlumno')->with('alumno', $Alumno);
+    }
   
     public function getAlumno($id){
   
@@ -26,18 +31,18 @@ class AlumnoController extends Controller{
     }
   
     public function createAlumno(Request $request){
-  
         $Alumno = Alumno::create($request->all());
-  
-        return response()->json($Alumno);
-  
+        return redirect('app/alumno');
     }
   
     public function deleteAlumno($id){
-        $Alumno  = Alumno::find($id);
-        $Alumno->delete();
- 
-        return response()->json('Deleted');
+        $Alumno = Alumno::find($id);
+
+        if ($Alumno != null) {
+            $Alumno->delete();
+            return redirect('app/alumno');
+        }
+        return redirect('app/alumno');
     }
   
     public function updateAlumno(Request $request,$id){
@@ -48,10 +53,9 @@ class AlumnoController extends Controller{
         $Alumno->direccion = $request->input('direccion');
         $Alumno->localidad = $request->input('localidad');
         $Alumno->provincia = $request->input('provincia');
-        $Alumno->title = $request->input('fecha_nac');
+        $Alumno->fecha_nac = $request->input('fecha_nac');
         $Alumno->save();
-  
-        return response()->json($Alumno);
+        return redirect('app/alumno');
     }
  
 }
